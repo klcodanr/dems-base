@@ -1,0 +1,24 @@
+---
+layout: default
+---
+<div class="row">
+
+    <div class="col-sm-8">
+        <section class=" transparent-block-default">
+            <h2>{{page.title}}</h2>
+        </section>
+        <div class="row">
+            {% for post in site.posts %}
+            {% for tag in post.tags %}
+                {% if tag == page.tag %}
+                    {% include post.html %}
+                    {% cycle '', '</div><div class="row">' %}
+                {% endif %}
+            {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+    <aside class="transparent-block-default col-sm-4">
+        {% include twitter.html %}
+    </aside>
+</div>

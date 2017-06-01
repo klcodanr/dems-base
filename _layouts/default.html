@@ -1,0 +1,81 @@
+---
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>{% if page.title %}{{ page.title | strip_html }} | {% endif %}{{site.name}}</title>
+		{% if page.tags %}<meta content="{{page.tags | join: ', '}}" name="keywords" />{% endif %}
+		{% if page.summary %}
+            <meta content="{{ page.summary | strip_html | truncatewords: 50 }}" name="description" />
+            <meta name="twitter:description" content="{{ page.summary | strip_html | truncatewords: 50  }}" />
+        {% else %}
+            <meta content="{{ content | strip_html | truncatewords: 50 }}" name="description" />
+            <meta name="twitter:description" content="{{ content | strip_html | truncatewords: 50  }}" /> 
+        {% endif %}
+		<meta content="{{ site.author }}" name="author" />
+		<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport" />
+		<meta property="og:site_name" content="{{site.name}}"/>
+		<meta property="og:type" content="blog"/>
+		<meta property="og:title" content="{% if page.title %}{{ page.title }} | {% endif %}{{site.name}}"/>
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="{% if page.title %}{{ page.title }} | {% endif %}{{site.name}}" />
+		{% if page.thumbnail %}
+			<meta property="og:image" content="{{ site.url }}{{ page.thumbnail }}"/>
+            <meta name="twitter:image" content="{{ site.url }}{{ page.thumbnail }}"/>
+		{% else %}
+			<meta property="og:image" content="{{ site.url }}/images/logo.jpg"/>
+            <meta name="twitter:image" content="{{ site.url }}/images/logo.jpg"/>
+		{% endif %}
+        <meta property="og:url" content="{{ site.url }}{{page.url | remove: 'index.html' | replace: '.html', '' | replace: ' ', '%20' }}"/>
+        <link rel="canonical" href="{{ site.url }}{{page.url | remove: 'index.html' | replace: '.html', '' | replace: ' ', '%20' }}" />
+        <meta name="twitter:url" content="{{ site.url }}{{page.url | remove: 'index.html' | replace: '.html', '' | replace: ' ', '%20' }}" />
+        {% bundle %}[ /css/bootstrap.min.css, /css/bootstrap-theme.min.css, 'http://fonts.googleapis.com/css?family=Lato', /css/font-awesome.min.css, /css/theme.css, /css/custom.css ]{% endbundle %}
+		<link rel="shortcut icon" href="{{ site.url }}/favicon.ico" />
+		<link rel="alternate" type="application/rss+xml" href="{{ site.url }}/rss.xml" title="{{site.name}} RSS Feed" />
+	</head>
+	<body vocab="http://schema.org/" itemscope itemtype="http://schema.org/WebPage">
+		<div class="container main-content">
+			<div class="header">
+				<header class="page-header row">
+					<div class="pull-right share-top">
+						{% include share.html %}
+					</div>
+					<img src="/images/headshot.jpg" alt="{{site.name}} class="img-responsive"/>
+					<span class="page-headline">
+						{{site.name}}
+					</span>
+				</header>
+				{% include nav.html %}
+				{% include slider.html %}
+			</div>
+			{{ content }}
+		</div>
+		{% include signup-form.html %}
+		<footer class="page-footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="pull-left">
+							Copyright &copy; 2009 - {{site.time | date: '%Y' }} &mdash; {{ site.author }}
+						</div>
+	
+						<span class="pull-right">
+							<a href="{{site.social.facebook}}" target="_blank" rel="noopener" title="Find {{site.name}} on Facebook!" class="btn btn-default">
+								<i class="fa fa-facebook" aria-hidden="true"></i><span class="sr-only">Find {{site.name}} on Facebook</span>
+							</a>
+							<a href="{{site.social.twitter}}" title="Find {{site.name}} on Twitter!" target="_blank" rel="noopener" class="btn btn-default">
+								<i class="fa fa-twitter" aria-hidden="true"></i><span class="sr-only">Find {{site.name}} on Twitter</span>
+							</a>
+							<a href="/feed.xml" title="Follow {{site.name}}'s RSS Feed" target="_blank" rel="noopener" class="btn btn-default" id="rss">
+								<i class="fa fa-rss" aria-hidden="true"></i><span class="sr-only">Follow {{site.name}}'s RSS Feed</span>
+							</a>
+						</span>
+					</div>
+                </div>
+            </div>
+		</footer>
+        {% bundle %}[//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js, /js/bootstrap.min.js, /js/custom.js] {% endbundle %}
+	</body>
+</html>

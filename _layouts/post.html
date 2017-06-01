@@ -1,0 +1,103 @@
+---
+layout: default
+---
+
+<div class="row">
+	<section class="col-md-9 transparent-block-default">
+		<article class="post" typeof="BlogPosting">
+			<header class="row">
+				<div class="col-md-2">
+					{% if page.thumbnail %}
+						<img property="image" class="img-responsive img-rounded" src="{{ page.thumbnail }}" alt="{{page.title}}" />
+					{% else %}
+						<img property="image" class="img-responsive img-rounded" src="/images/headshot.jpg" alt="{{page.title}}" />
+					{% endif %}
+				</div>
+				<div class="col-md-10">
+					<h3 property="headline">{{ page.title }}</h3>
+					<em>
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                         By <span class="hide" property="publisher" typeOf="Organization">
+                         	<span property="name">{{ site.author }}</span>
+                         	<img property="logo" src="{{site.name}}/images/headshot.jpg" alt="Picture of {{site.author}}" /></span>
+                         	<span class="author" property="author" typeOf="Person">
+                         		<span property="name">
+                         			{% if page.author %}
+                         				{{ page.author }}
+                         			{% else %}
+	                         			{{ site.author }}
+	                         		{% endif %}
+                         		</span>
+                         	</span>
+                         	&nbsp;on&nbsp;<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> 
+                         	<time datetime='{{page.date | date: site.dateformat}}'><span class="hide" property="dateModified">{{page.date | date_to_xmlschema }}</span>
+                         	<span property="datePublished">{{page.date | date: site.date_format}}</span>
+                         	</time>
+					</em>
+				</div>
+			</header>
+			<hr class="large" />
+			<div class="content">
+				{{ content }}
+			</div>
+			<hr class="large"/>
+            <h4>Tags</h4>
+            <div class="tags" property="keywords">
+                {% for tag in page.tags %}
+                    <a href="/tag/{{tag | UrlEncode | replace: ' ', '%20'}}/" title="Posts tagged with {{tag}}">{{ tag }}</a>&nbsp;&nbsp;
+                {% endfor %}
+            </div>
+			<hr class="large"/>
+			<div class="comments">
+				{% include disqus.html %}
+			</div>
+            <hr class="large"/>
+            <div class="row">
+                <div class="col-xs-6">
+                    {% if page.previous.url %}
+                        <a class="btn btn-inverse" href="{{page.previous.url}}" {{target}} title="{{page.previous.title}}">&laquo; Previous Post</a>
+                    {% endif %}
+                </div>
+                <div class="col-xs-6">
+                    {% if page.next.url %}
+                        <a class="btn btn-inverse pull-right" href="{{page.next.url}}" {{target}} title="{{page.next.title}}">Next Post &raquo;</a>
+                    {% endif %}
+                </div>
+            </div>
+		</article>
+	</section>
+    <aside class="col-md-3">
+        <a href="/feed.xml"><i class="fa fa-rss"></i> Follow {{ site.author }}'s Updates</a>
+        <hr/>
+        <h3>More Posts</h3>
+        <div class="tabs">
+            <ul class="nav nav-tabs">
+                {% if page.path contains '_posts' %}
+                    <li class="active"><a href="#relatedPosts" data-toggle="tab"><span class="fa fa-star"></span> Related</a></li>
+                {% endif %}
+                <li><a href="#recentPosts" data-toggle="tab"><span class="fa fa-clock-o"></span> Recent</a></li>
+            </ul>
+            <div class="tab-content">
+                {% if page.path contains '_posts' %}
+                    <div class="tab-pane active" id="relatedPosts">
+                        <ul class="simple-post-list list-unstyled">
+                            
+                        </ul>
+                    </div>
+                {% endif %}
+                <div class="tab-pane" id="recentPosts">
+                    <ul class="simple-post-list list-unstyled">
+                        {% for post in site.posts limit:5 %}
+                            <li>
+                                {% include post-small.html %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <hr />
+        {% include twitter.html %}
+    </aside>
+</div>
+

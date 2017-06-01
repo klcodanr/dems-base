@@ -1,0 +1,23 @@
+{% capture today %}{{ "now" | date: "%s" }}{% endcapture %}{% capture endDate %}{{ event.endDate | date: "%s" }}{% endcapture %}
+{%if endDate > today %}
+   <div class="row">
+	   <div class="col-sm-12">
+		   <h3>
+			   <a href="{{event.url}}" title="{{event.title}}">
+			   {{event.title}}
+			   </a>
+		   </h3>
+		   <strong>
+			   {% if event.displayTime %}
+				   <span class="glyphicon glyphicon-time"></span> Starts {{ event.startDate | date: site.time_format }}
+			   {% else %}
+				   <span class="glyphicon glyphicon-time"></span> Starts {{ event.startDate | date: site.date_format }}
+			   {% endif %}
+		   </strong><br/>
+		   {{event.content | strip_html | truncatewords: 25 }}&nbsp;<a href="{{post.url}}" title="{{post.title}}" itemprop="url">
+				Find&nbsp;Out&nbsp;More&nbsp;&raquo;
+			</a>
+	   </div>
+   </div>
+   <hr/>
+{% endif %}

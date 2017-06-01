@@ -1,0 +1,53 @@
+# Name of your website (this will show up at the top of your page and in the RSS feed)
+name: Joe Smith for Judge
+
+# Short description (goes below the title; it will also be used in the RSS feed)
+description: Elect Joe Smith for Judge!
+
+# Your name, as you want it to appear underneath each post and in the footer
+author: Joe Smith
+
+# The URL of your actual domain. This will be used to make absolute links in the RSS feed.
+url: https://www.joesmith.com
+
+# Exclude system files
+exclude: [.gitignore]
+
+# Include .htaccess
+include: [.htaccess]
+
+# Control the number of post per page
+paginate: 10
+paginate_path: "/news/page:num/"
+
+# Additional GEMs to install
+gems: [jekyll-paginate]
+
+# Set the timezone so the update appears correctly
+timezone: America/New_York
+
+# Define the date formats used on the site
+time_format: '%b %d, %Y at %I:%M %p'
+date_format: '%b %d, %Y'
+rss_time_format: '%a, %d %b %Y %H:%M:%S %z'
+
+social:
+  twitter: http://twitter.com/joesmith
+  facebook: http://facebook.com/joesmith
+  sharethis: ede30d23-ba4f-461f-8855-d1178b4b3a94
+
+# Configure the Asset Bundler
+asset_bundler:
+  compress:
+    js: 'yui'
+    css: 'yui'
+  markup_templates:
+    js: "\t\t<script type=\"text/javascript\" src=\"{{url}}\"></script>\n"
+
+collections:
+  events:
+    output: true
+    permalink: /events/:name
+    layout: event
+  cta:
+    output: false

@@ -1,0 +1,24 @@
+---
+layout: default
+---
+
+<div class="row">
+    <div class="col-sm-3">
+        <img class="img-responsive img-thumbnail center-block" src="{{page.image}}" alt="{{page.title}}" />
+    </div>
+    <div class="col-sm-9">
+        <h1>{{page.title}}</h1>
+        {%include share.html %}
+        <br/><hr/><br/>
+        <h4>Date / Time</h4>
+        <span class="glyphicon glyphicon-time"></span> 
+        {% if page.displayTime %}
+            {{ page.startDate | date: site.time_format }} &mdash; {{ page.endDate | date: site.time_format }}
+        {% else %}
+            {{ page.startDate | date: site.date_format }} &mdash; {{ page.endDate | date: site.date_format }}
+        {% endif %}
+        {% include location.html %}
+        <h4>Description</h4>
+        {{content}}
+    </div>
+</div>

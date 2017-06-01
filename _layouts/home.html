@@ -1,0 +1,29 @@
+---
+layout: default
+---
+
+<section class="row">
+	<div class="col-md-4">
+        <h2>Meet {{site.author}}</h2>
+		{{ content }}
+	</div>
+	<div class="col-md-4">
+        <h2>News &amp; Updates</h2>
+        <div class="news-updates">
+			<section itemscope itemtype="http://schema.org/Blog">
+				{% for post in site.posts | limit: 3 %}
+					{% include post.html %} 
+				{% endfor %}
+			</section>
+		</div>
+        <h2>Upcoming Events</h2>
+        <div class="events">
+			{% for event in site.events | limit: 3 %}
+				{% include event-small.html %} 
+			{% endfor %}
+		</div>
+	</div>
+	<aside class="col-md-4">
+		{% include twitter.html %}
+	</aside>
+</section>

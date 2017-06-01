@@ -1,0 +1,25 @@
+---
+layout: default
+---
+
+<div class="sixteen columns">
+  <article id="{{ page.client }}" class="project">
+   <header>
+      <h4>{{ page.client }} - {{ page.start-date | date: "%m %Y" }} - {{ page.end-date | date: "%m %Y" }} - {{ page.project }}</h4>
+   </header>
+    <p>
+      <em>{{ page.role }}</em>
+    </p>
+    <ul>
+      {% for task in page.tasks %}
+        <li>{{ task }}</li>
+      {% endfor %}
+    </ul>
+    <p>Tools Used</p>
+    <ul>
+      {% for tool in page.tools %}
+        <li>{{ tool }}</li>
+      {% endfor %}
+    </ul>
+  </article>
+</div>

@@ -1,0 +1,20 @@
+<div class="cta well">
+	{% if cta.color == 'red' %}
+		{% assign cls = 'danger' %}
+	{% elsif cta.color == 'green' %}
+		{% assign cls = 'success' %}
+	{% elsif cta.color == 'blue' %}
+		{% assign cls = 'primary' %}
+	{% else %}
+		{% assign cls = 'default' %}
+	{% endif %}
+	<h4 class="text-{{cls}}">
+		{{ cta.title }}
+	</h4>
+	<p>
+		{{cta.summary}}
+	</p>
+	<div>
+		<a href="{{cta.link}}" class="btn btn-{{cls}}">{{cta.cta}}</a>
+	</div>
+</div>

@@ -1,0 +1,67 @@
+<div class="col-sm-8 col-sm-offset-2">
+    <h3>Volunteer to Help {{site.name}}!</h3>
+    <br/><br/>
+    <form accept-charset="UTF-8" enctype="multipart/form-data" method="post" action="https://candidate.wufoo.com/forms/id/#public" id="volunteer-form" title="Get Involved">
+        <div class="form-group">
+            <label class="control-label" for="Field9">Your Name <span class="text-danger">*</span></label>
+            <input name="Field9" class="form-control" type="text" maxlength="255" required="required" />
+            <span class="help-block hidden">
+                Please provide your name
+            </span>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="Field4">Your Email Address <span class="text-danger">*</span></label>
+            <input name="Field4" class="form-control" type="email" maxlength="255" required="required" />
+            <span class="help-block hidden">
+                Please provide your email
+            </span>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="Field4">Phone <span class="text-danger">*</span></label>
+            <input name="Field3" class="form-control" type="tel" maxlength="255" required="required" />
+            <span class="help-block hidden">
+                Please provide your phone number
+            </span>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="Field2">I'd like to volunteer to:</label>
+           <div class="checkbox"><label class="checkbox">
+            <input class="checkbox" id="Field2" name="Field2" type="checkbox" value="Call Voters">
+            I will call voters.
+          </label></div>
+          <div class="checkbox"><label class="checkbox">
+            <input class="checkbox" id="Field2" name="Field2" type="checkbox" value="House Party">
+            I will host a house party
+          </label></div>
+          <div class="checkbox"><label class="checkbox">
+            <input class="checkbox" id="Field2" name="Field2" type="checkbox" value="Stuff Envelopes">
+            I will stuff envelopes
+          </label></div>
+          <div class="checkbox"><label class="checkbox">
+            <input class="checkbox" id="Field2" name="Field2" type="checkbox" value="Canvass">
+            I will walk neighborhoods and knock on voters' doors
+          </label></div>
+          <div class="checkbox"><label class="checkbox">
+            <input class="checkbox" id="Field2" name="Field2" type="checkbox" value="Intern">
+            I want to be an intern
+          </label></div>
+          <div class="checkbox"><label class="checkbox">
+            <input class="checkbox" id="Field2" name="Field2" type="checkbox" value="Precinct Captain">
+            I want to be a precinct captain
+          </label></div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="Field3">Comments</label>
+            <textarea name="Field3" class="form-control" spellcheck="true" rows="5" cols="50"></textarea>
+
+        </div>
+        <div class="form-group">
+            <button name="saveForm" class="btn btn-success btn-lg" type="submit"><span class="glyphicon glyphicon-send"></span>&nbsp;&nbsp;Volunteer!</button>
+        </div>
+        <div class="hide">
+            <label for="comment">Do Not Fill This Out</label>
+            <textarea name="comment" id="comment" rows="1" cols="1"></textarea>
+            <input type="hidden" id="idstamp" name="idstamp" value="id">
+        </div>
+    </form>
+</div>
